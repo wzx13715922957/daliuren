@@ -1,0 +1,38 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"><meta http-equiv="Content-Type" content="text/html;charset=utf-8"><link rel="stylesheet" href="./css/index.css"><script type="text/javascript">
+        function paike() {
+            //t时间戳 d下一天 g昼夜贵人 h活时  q禽星 b出生年 gender性别 
+            let t = new Date(document.getElementsByClassName("datetime")[0].value).getTime();
+            let g = document.getElementsByClassName("guiren")[0].selectedIndex;
+            let h = document.getElementsByClassName("zixuang")[0].selectedIndex - 1;
+            let q = document.getElementsByClassName("qinxin")[0].selectedIndex - 1;
+            let b = document.getElementsByClassName("birth")[0].value;
+            let gender = (document.getElementsByClassName("gender")[0].selectedIndex == 0 ? 1 : 0);
+            location.replace("paipan.html?t=" + t.toString() + "&g=" + g.toString() + "&h=" + h.toString() + "&q=" + q.toString() + "&b=" + b.toString() + "&gender=" + gender.toString());
+        }
+
+        function reset() {
+
+            let year = new Date().getFullYear(); //年
+            if (year < 1900) year = year + 1900;
+            let month = new Date().getMonth() + 1; //月
+            if (month < 10) month = '0' + month;
+            let day = new Date().getDate(); //日
+            if (day < 10) day = '0' + day;
+            let hour = new Date().getHours(); //小时
+            if (hour < 10) hour = '0' + hour;
+            let minute = new Date().getMinutes(); //分钟
+            if (minute < 10) minute = '0' + minute;
+            let second = new Date().getSeconds(); //秒
+            if (second < 10) second = '0' + second;
+            let str = year + '-' + month + '-' + day + 'T' + hour + ':' + minute + ':' + second;
+            document.getElementsByClassName("datetime")[0].value = str;
+        }
+        window.onload = function() {
+            reset()
+        }
+    </script></head><body><div class="box"><div style="margin: 5px 5px 10px 5px;">时间日期：
+            <input class="datetime" type="datetime-local"></div><div style="margin: 5px 5px 10px 5px;">出生年：
+            <input class="birth" type="text" min="1900" max="2100" value="2001"><font style=>性别：</font><select class="gender"><option>男</option><option>女</option></select></div><div style="margin: 5px 5px 10px 5px;">昼夜贵人：
+            <select class="guiren"><option>自动</option><option>昼贵人</option><option>夜贵人</option></select></div><div style="margin: 5px 5px 10px 5px;">活时：
+            <select class="zixuang"><option>无</option><option>子</option><option>丑</option><option>寅</option><option>卯</option><option>辰</option><option>巳</option><option>午</option><option>未</option><option>申</option><option>酉</option><option>戌</option><option>亥</option></select></div><div style="margin: 5px 5px 10px 5px;">禽星：
+            <select class="qinxin"><option>日禽</option><option>角木蛟</option><option>亢金龙</option><option>氐土貉</option><option>房日兔</option><option>心月狐</option><option>尾火虎</option><option>箕水豹</option><option>斗木獬</option><option>牛金牛</option><option>女土蝠</option><option>虚日鼠</option><option>危月燕</option><option>室火猪</option><option>壁水貐</option><option>奎木狼</option><option>娄金狗</option><option>胃土雉</option><option>昴日鸡</option><option>毕月乌</option><option>觜火猴</option><option>参水猿</option><option>井木犴</option><option>鬼金羊</option><option>柳土獐</option><option>星日马</option><option>张月鹿</option><option>翼火蛇</option><option>轸水蚓</option></select></div><input style="margin: 5px 5px 10px 5px;width: 150px;" onclick="paike();" type="button" value="排课" /><input style="margin: 5px 5px 10px 5px;width: 150px;" onclick="reset();" type="button" value="重置" /></div></body></html>
